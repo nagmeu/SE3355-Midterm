@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Türkiye'nin En Büyük Online Alışveriş Sitesi{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .form-control {
+            width: 500px; /* Arama çubuğunun yeni genişliği */
+            font-size: 18px; /* Arama çubuğunun yazı boyutu */
+        }
+        .btn-search {
+            font-size: 18px; /* Düğmenin yazı boyutu */
+            background-color: grey; /* Düğmenin arkaplan rengi */
+            border-color: grey; /* Düğmenin kenarlık rengi */
+            color: white; /* Düğmenin metin rengi */
+        }
+        .site-title {
+            color: #FF6000; /* Site adı rengi */
+            font-size: 33px; /* Site adı yazı boyutu */
+            font-weight: bold; /* Site adı yazı kalınlığı */
+            margin-right: 20px; /* Sağ tarafında biraz boşluk bırak */
+            cursor: pointer; /* Başlık üzerine geldiğinde imleci bir el simgesine dönüştür */
+            text-decoration: none !important; /* Metin altını kaldır */
+        }
+        .site-title:hover {
+            color: #FF6000; /* Başlık üzerine gelindiğinde rengin değişmemesi için mevcut renk */
+        }
+        .navbar {
+            padding: 10px 150px; 
+            margin-left: 100px;/* Navbar içindeki boşluk miktarı */
+        }
+        .search-form {
+            display: flex;
+            align-items: center;
+            padding: 0px 150px;
+        }
+        .bottom-image {
+            margin-top: 0px; /* Resmin üstündeki boşluğu ayarlar */
+            text-align: center; /* Resmi ortalar */
+        }
+        .product-details {
+            display: flex;
+            padding: 20px 150px; /* Ürün detayları için içerik alanı */
+        }
+        .left-container {
+            flex: 1;
+        }
+        .right-container {
+            flex: 1;
+            background-color: #f2f2f2; /* Gri arka plan */
+            padding: 40px 20px;
+            font-size: 20px; /* Yazı boyutunu büyüt */
+        }
+        .product-name {
+            font-size: 30px; /* Ürün adı font büyüklüğü */
+            margin-bottom: 20px; /* Fiyat ile arasında boşluk */
+            font-weight: bold;
+        }
+        .product-price {
+            font-size: 40px; /* Fiyat font büyüklüğü */
+            font-weight: bold;
+        }
+        .installment-abc {
+            font-weight: bold;
+        }
+        .premium-offer {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-top: 20px;
+            margin-bottom: 10px; /* Yeni eklenen stil */
+            font-size: 15px;
+        }
+        .premium-logo {
+            width: 10%;
+            height: auto;
+        }
+        .earn-text {
+            font-weight: bold;
+        }
+        /* Seller Info Container */
+        .seller-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        /* Seller Info */
+        .seller-info-container {
+            background-color: white; /* Beyaz arka plan */
+            padding: 10px; /* İçerik etrafında boşluk */
+            border: 1px solid #ccc; /* Gri border */
+            display: flex;
+            align-items: center; /* Ögeleri dikey olarak hizala */
+            font-size: 15px;
+        }
+
+        /* Seller Info */
+        .seller-info {
+            display: flex; /* Satıcı bilgilerini yatay düzende göster */
+            align-items: center;
+        }
+
+        /* Seller Name */
+        .seller-name {
+            font-weight: bold; /* Satıcı adı kalın */
+            color: blue; /* Mavi renk */
+            cursor: pointer; /* Üzerine gelindiğinde imleci el simgesine dönüştür */
+            margin-right: 10px;
+        }
+
+        /* Seller Rating */
+        .seller-rating {
+            font-weight: bold;
+            color: blue; /* Mavi renk */
+            cursor: pointer; /* Üzerine gelindiğinde imleci el simgesine dönüştür */
+        }
+
+        /* Campaign Link */
+/* Campaign Link */
+        .campaign-link {
+            display: inline-block; /* Diğer öğelerle aynı hizada durmasını sağlar */
+            color: black; /* Siyah renk */
+            cursor: pointer; /* Üzerine gelindiğinde imleci el simgesine dönüştür */
+            text-decoration: none; /* Metin altını kaldır */
+            margin-left: 10px; /* Diğer öğelerden biraz boşluk bırak */
+        }
+
+        /* Hover effect */
+        .campaign-link:hover {
+            text-decoration: none; /* Üzerine gelindiğinde altını çizme */
+        }
+        /* Seller Ask Button */
+        .ask-button {
+    background-color: #f2f2f2; /* Arka plan rengi */
+    color: black; /* Metin rengi */
+    padding: 10px 20px; /* Buton içeriği etrafındaki boşluk */
+    border: 1px solid #ccc; /* Gri border */
+    cursor: pointer; /* Üzerine gelindiğinde imleci el simgesine dönüştür */
+    border-radius: 5px; /* Köşeleri yuvarlat */
+}
+
+/* Hover effect */
+.ask-button:hover {
+    background-color: #e6e6e6; /* Arka plan rengi */
+}
+    .kargo{
+        margin-top: 5px ;
+        color: rgb(61, 165, 61);
+        font-size: 15px;
+    }
+    .counter {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .counter-label {
+            margin-right: 10px;
+        }
+        .counter-input {
+            width: 50px;
+            text-align: center;
+        }
+        .form-control2 {
+            width: 50px; /* Arama çubuğunun yeni genişliği */
+            font-size: 19px; /* Arama çubuğunun yazı boyutu */
+        }
+            
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <a class="site-title ml-4" href="/">hepsiburada</a>
+    <form class="search-form" action="/search" method="GET">
+        <input class="form-control" type="search" name="query" placeholder="Ürün, kategori veya marka ara" aria-label="Search">
+        <button class="btn btn-search my-2 my-sm-0" type="submit">Ara</button>
+    </form>
+</nav>
+
+<div class="bottom-image">
+    <img src="{{ url_for('static', filename='colorfulbar.png') }}" alt="colors" class="img-fluid">
+</div>
+
+<div class="product-details">
+    <!-- Left Container: Product Image -->
+    <div class="left-container">
+        <img src="{{ url_for('static', filename=product_image) }}" alt="Ürün Resmi" class="img-fluid">
+    </div>
+    <!-- Right Container: Product Details -->
+    <div class="right-container">
+        <h2 class="product-name">{{ product_name }}</h2>
+        <p class="product-price">{{ product_price }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <img src="{{ url_for('static', filename='rating.png') }}" alt="rating" class="rating"></p>
+        <p class="installment-text">Avantajlı <span class="installment-abc">taksit </span>imkanlarıyla</p>
+        <div class="premium-offer">
+            <img src="{{ url_for('static', filename='premium-logo.png') }}" alt="premium-logo" class="premium-logo">
+            <span> 1 TL'ye Hepsiburada Premium'a geç, Bu üründen <strong>10 TL Hepsipara</strong> Kazan.</span>
+        </div>
+        <br>
+        <!-- Seller Info Container -->
+        <div class="seller-container">
+            <!-- Seller Info -->
+            <div class="seller-info-container">
+                <div class="seller-info">
+                    <p class: satici_detay>&nbsp;Satıcı: <span class="seller-name">{{ seller_name }}</span>&nbsp; |&nbsp; </p>
+                    <!-- Seller Rating -->
+                    <p class: satici_detay>Puan: <span class="seller-rating">{{ seller_rating }}</span> &nbsp;| &nbsp;</p>
+                    <a href="#" class="campaign-link">&nbsp;Kampanyaları Gör</a>
+                </div>
+            </div>
+            <!-- Seller Ask Button -->
+            <button class="ask-button">Satıcıya Sor</button>
+        </div>
+        <p class="kargo">200 TL üzeri kargo bedava</p>
+        <br>
+        <br>
+        <div class="quantity-wrapper inline-fields">
+            <span class="quantity-label" style="width: 50px;"></span>
+            <input type="number" class="form-control2 quantity-input" value="1" min="1">
+            <button class="btn btn-primary ml-2">Sepete Ekle</button>
+        </div>
+        
+    </div>
+  
+    
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
