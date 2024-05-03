@@ -6,7 +6,7 @@ app.secret_key = "secretkey123"
 db_connection = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Nagme2122",
+    password="sifre",
     database="urunler"
 )
 app.config['DB_CONNECTION'] = db_connection
